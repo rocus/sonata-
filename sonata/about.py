@@ -173,12 +173,12 @@ class About:
             hours = 0
         if hours >= 24:
             days = round(hours / 24, 1)
-            time_text = ngettext('{count} day of bliss.',
-                                 '{count} days of bliss.',
+            time_text = ngettext('{count} day of blisss.',
+                                 '{count} days of blisss.',
                                  days).format(count=days)
         else:
-            time_text = ngettext('{count} hour of bliss.',
-                                 '{count} hours of bliss.',
+            time_text = ngettext('{count} hour of blisss.',
+                                 '{count} hours of blisss.',
                                  hours).format(count=hours)
 
         parts = (song_text, album_text, artist_text, time_text)

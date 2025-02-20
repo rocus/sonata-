@@ -58,6 +58,16 @@ class MPDClient:
                 return None
 
         if cmd_name in ['songinfo', 'currentsong']:
+            # next nine lines Rocus
+            if ('name' in retval) and ('artist' not in retval) and ('title' in retval):            #Rocus
+                     t = retval [ 'title' ]
+                     i = t.find ( ' - ' )
+                     if not i == -1:
+                           artist = t [:i]
+                           title  = t [i+3:]
+                           retval.update({'title':  title  })
+                           retval.update({'artist':  artist  })
+                           retval.pop ('name' )
             return MPDSong(retval)
         elif cmd_name in ['plchanges', 'search', 'playlistinfo']:
             return [MPDSong(s) for s in retval]

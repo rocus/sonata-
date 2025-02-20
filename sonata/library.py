@@ -150,6 +150,9 @@ class Library:
                                                  Gtk.IconSize.LARGE_TOOLBAR)
         self.sonatapb = self.library.render_icon('sonata',
                                                  Gtk.IconSize.LARGE_TOOLBAR)
+        # next 2 lines Rocus
+        self.playlistpb = self.library.render_icon('sonata-play',     #Rocus
+                                                 Gtk.IconSize.LARGE_TOOLBAR)
 
         # list of the library views: (id, name, icon name, label)
         self.VIEWS = [
@@ -553,6 +556,11 @@ class Library:
                             [self.sonatapb, data,
                              formatting.parse(self.config.libraryformat, item,
                                               True)])]
+                elif 'playlist' in item:   #Rocus
+                    name = os.path.basename(item['playlist'])
+                    data = SongRecord(path=item["playlist"])
+                    bd += [('p' + str(name).lower(), [self.playlistpb, data,
+                                                      misc.escape_html(name)])]
             bd.sort(key=operator.itemgetter(0))
         return bd
 
@@ -1096,8 +1104,8 @@ class Library:
                 return
         value = self.librarydata.get_value(self.librarydata.get_iter(path), 1)
         icon = self.librarydata.get_value(self.librarydata.get_iter(path), 0)
-        if icon == self.sonatapb:
-            # Song found, add item
+        # next line Rocus
+        if icon == self.sonatapb or icon == self.playlistpb:     #Rocus
             self.on_add_item(self.library)
         elif value.path == "..":
             self.library_browse_parent(None)
