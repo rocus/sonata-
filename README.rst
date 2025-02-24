@@ -1,3 +1,18 @@
+Fork of Sonata for Radio stations
+=================================
+
+This is a fork of the original Sonata program. If you have playlists in your music 
+tree these will be shown like mp3's files (with another icon). You can "execute"
+these pls's and m3u's files by clicking. The corresponding file will be "loaded" (and
+not "added" like with mp3's). This makes it possible to access radio stations by means 
+of their playlist file (with embedded a URL) and still maintaining a tree like structure 
+for your radio stations.
+
+Most mpd clients just cater for mp3's and not for radio stations whereas mpd is capable 
+of playing radio stations. 
+
+
+
 Sonata is looking for new maintainers!
 ======================================
 
